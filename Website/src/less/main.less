@@ -1,0 +1,133 @@
+// Import Bootstrap source
+@import '../../bower_components/bootstrap/less/bootstrap.less';
+
+// Import your LESS files here
+//@import 'variables';    // Will import ./less/variables.less
+//@import 'signup';
+
+// grab our google fonts:
+@import url(http://fonts.googleapis.com/css?family=Great+Vibes|Open+Sans+Condensed:300);
+
+// add our custom fonts from file:
+@font-face {
+	font-family:caviar-dreams;
+	src: url(fonts/CaviarDreams.ttf);
+}
+
+// use this: http://ruby.bvision.com/blog/please-stop-embedding-bootstrap-classes-in-your-html
+
+#container {
+	.make-row();
+}
+
+.weregettingmarried, 
+.rsvp,
+.accommodations, 
+.registry,
+.gallery,
+.footer {
+
+	.make-md-column-offset(3);
+	.make-md-column(6);
+
+	padding-top:200px;
+	padding-bottom:200px;
+
+	h2 {
+		text-align:center;
+		font-family: 'Great Vibes', cursive;
+		font-size:90px;
+	}
+
+	p {
+		text-align:center;
+		font-family: 'Open Sans Condensed', sans-serif;
+		font-size:20px;
+
+	}
+
+	.actionbuttons {
+		
+		text-align:center;
+
+		a {
+			text-transform:uppercase;
+			font-weight:bold;
+
+			color:white;
+			background-color:#666;
+			padding:5px 10px;
+		}
+		a:hover {
+			text-decoration:none;
+			background-color:#555;
+		}
+	}
+}
+
+.bigphoto {
+	.make-md-column(12);
+	height:800px;
+	background-image:url('http://placekitten.com/g/1024/800');
+	position:relative;
+
+	#logo {
+		position: fixed;
+		top: 0px;
+		left: 20px;
+		width: 220px;
+		height: 209px;
+		font-family: 'Great Vibes',cursive;
+		font-size: 50px;
+		color: white;
+		z-index:100;
+		#logo-bg {
+			background-color:black;
+			width: 220px;
+			height: 106px;
+		}
+
+		#logo-arrow {
+			/* background-color: black; */
+			position: absolute;
+			bottom: 0px;
+			height: 103px;
+			width: 220px;
+			border-left: 110px solid transparent;
+			border-right: 110px solid transparent;
+			border-top: 38px solid black;
+		}
+
+		.michaela {
+			position: absolute;
+			top: 3px;
+			left: 14px;
+			-webkit-transform: rotate(-6deg);
+		}
+		.amp {
+			position: absolute;
+			top: 48px;
+			left: 35px;
+			color: #666;
+			font-size: 56px;
+		}
+		.gavin {
+			position: absolute;
+			top: 51px;
+			left: 84px;
+			-webkit-transform: rotate(-6deg);
+		}
+	}
+}
+
+.2up {
+	.make-row();
+
+	a {
+		.make-md-column(6);
+
+		img {
+			width:100%;
+		}
+	}
+}

@@ -1,0 +1,6 @@
+{
+  "name": "g-and-m",
+  "dependencies": {
+    "bootstrap": "~3.2.0"
+  }
+}
