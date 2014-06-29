@@ -6,26 +6,31 @@
 //@import 'signup';
 
 // grab our google fonts:
-@import url(http://fonts.googleapis.com/css?family=Great+Vibes|Open+Sans+Condensed:300);
+@import url(http://fonts.googleapis.com/css?family=Great+Vibes|Open+Sans+Condensed:300,700);
 
 // add our custom fonts from file:
 @font-face {
 	font-family:caviar-dreams;
-	src: url(fonts/CaviarDreams.ttf);
+	src: url(../fonts/CaviarDreams.ttf);
 }
 
-// use this: http://ruby.bvision.com/blog/please-stop-embedding-bootstrap-classes-in-your-html
+// use semantic html, not boostrap classes. Examples:  http://ruby.bvision.com/blog/please-stop-embedding-bootstrap-classes-in-your-html
+
+
+// next up, add this gallery:
+// https://github.com/blueimp/Bootstrap-Image-Gallery
+
 
 #container {
 	.make-row();
 }
 
-.weregettingmarried, 
-.rsvp,
-.accommodations, 
-.registry,
-.gallery,
-.footer {
+#weregettingmarried, 
+#RSVP,
+#accommodations, 
+#registry,
+#gallery,
+#footer {
 
 	.make-md-column-offset(3);
 	.make-md-column(6);
@@ -39,7 +44,7 @@
 		font-size:90px;
 	}
 
-	p {
+	p, form {
 		text-align:center;
 		font-family: 'Open Sans Condensed', sans-serif;
 		font-size:20px;
@@ -63,9 +68,17 @@
 			background-color:#555;
 		}
 	}
+
+	#guestsearchresults {
+		display:none;
+	}
 }
 
-.bigphoto {
+[data-scrollto] {
+	cursor: pointer;
+}
+
+#bigphoto {
 	.make-md-column(12);
 	height:800px;
 	background-image:url('http://placekitten.com/g/1024/800');
@@ -81,6 +94,8 @@
 		font-size: 50px;
 		color: white;
 		z-index:100;
+		
+
 		#logo-bg {
 			background-color:black;
 			width: 220px;
@@ -88,7 +103,6 @@
 		}
 
 		#logo-arrow {
-			/* background-color: black; */
 			position: absolute;
 			bottom: 0px;
 			height: 103px;
@@ -118,6 +132,81 @@
 			-webkit-transform: rotate(-6deg);
 		}
 	}
+
+	#topmenu {
+
+		position:fixed;
+		top:5px;
+		right:0px;
+		z-index: 100;
+		.arrowleft {
+			position: absolute;
+			left: -52px;
+			height: 100%;
+			width: 52px;
+			border-top: 15px solid transparent;
+			border-bottom: 15px solid transparent;
+			border-right: 10px solid rgba(255,255,255,0.6);
+		}
+
+		ul {
+			margin:0px;
+			padding:5px;
+			list-style-type: none;
+			background-color:rgba(255,255,255,0.6);
+
+			li {
+				display:inline;
+				text-transform:uppercase;
+				font-weight:bold;
+				font-family: 'Open Sans Condensed', sans-serif;
+
+				a {
+					color:#333;
+					
+					padding-right: 10px;
+				}
+
+				a:hover {
+					text-decoration: none;
+					color:#666;
+				}
+			}
+		}
+	}
+
+	.scrolldown {
+		position: absolute;
+		right: 25px;
+		bottom: 35px;
+		
+		.text {
+			display:block;
+			background-color: black;
+			padding: 10px 6px 4px;
+			font-family: 'caviar-dreams', sans-serif;
+			color: white;
+			text-align: center;
+			line-height: 14px;
+			text-transform: uppercase;
+
+			
+		}
+
+		.text:hover {
+			text-decoration: none;
+		}
+
+		.arrowdown {
+			position: absolute;
+			bottom: -12px;
+			height: 12px;
+			width: 100%;
+			border-left: 30px solid transparent;
+			border-right: 30px solid transparent;
+			border-top: 9px solid black;
+		}
+	}
 }
 
 .2up {
@@ -131,3 +220,4 @@
 		}
 	}
 }
+

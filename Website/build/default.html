@@ -18,8 +18,8 @@
 
   <div id="container">
 
-    <div class="bigphoto">
-      <div id="logo">
+    <div id="bigphoto">
+      <div id="logo" data-scrollto="#bigphoto">
         <div id="logo-arrow"></div>
         <div id="logo-bg">
           <div class="michaela">Michaela</div>
@@ -28,20 +28,29 @@
           <div class="arrowdown"></div>
         </div>
       </div>
-    
-      <ul id="topmenu">
-        <li><a href="#wedding">Wedding</a></li>
-        <li><a href="#RSVP">RSVP</a></li>
-        <li><a href="#accommodations">Accommodations</a></li>
-        <li><a href="#registry">Registry</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-      </ul>
-      <div class="scrolldown"><a href="#">Scroll Down</a></div>
+      
+      <div id="topmenu">
+        <div class="arrowleft"></div>
+        <ul>
+          <li><a href="#weregettingmarried">Wedding</a></li>
+          <li><a href="#RSVP">RSVP</a></li>
+          <li><a href="#accommodations">Accommodations</a></li>
+          <li><a href="#registry">Registry</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+        </ul>
+      </div>
+      
+      <div class="scrolldown">
+        <div class="text" data-scrollto="#weregettingmarried">
+          Scroll<br />Down
+        </div>
+        <div class="arrowdown"></div>
+      </div>
     </div>
     
     
 
-    <div class="weregettingmarried">
+    <div id="weregettingmarried">
       <h2>We're getting married!</h2>
 
       <p>Michaela and Gavin are getting married on October 3, 2014. The ceremony and reception will take place at the Omar Arts &amp; Events Center.</p>
@@ -63,7 +72,7 @@
     </div>
 
 
-    <div class="rsvp">
+    <div id="RSVP">
       <h2>RSVP</h2>
       <p>To RSVP for this event, please search your name below and select the number of guests who will be attending.</p>
       <form id="nameform">
@@ -104,7 +113,7 @@
         </a>
     </div>
 
-    <div class="accommodations">
+    <div id="accommodations">
       <h2>Accommodations</h2>
       <p>We've arranged some accommodations for you as well. There are reserved room blocks available at the DoubleTree Omaha Downtown Hotel. Shuttle services will be available. Make sure to reference the &ldquo;Fernen/Koehler Wedding&rdquo; for discounted offers.</p>
       <p>DoubleTree Omaha Downtown<br />
@@ -126,7 +135,7 @@
         </a>
     </div>
 
-    <div class="registry">
+    <div id="registry">
       <h2>Registry</h2>
       <p>We are registered online at crowdrise.com as well as Bed, Bath &amp; Beyond and Target.</p>
       <div class="actionbuttons">
@@ -145,7 +154,7 @@
         </a>
     </div>
 
-    <div class="gallery">
+    <div id="gallery">
       <h2>Gallery</h2>
       <a href="http://placekitten.com/g/1200/950" class="img-thumbnail"><img src="http://placekitten.com/g/100/100" alt="" /></a>
       <a href="http://placekitten.com/g/1200/950" class="img-thumbnail"><img src="http://placekitten.com/g/100/100" alt="" /></a>
@@ -185,7 +194,7 @@
       <a href="http://placekitten.com/g/1200/950" class="img-thumbnail"><img src="http://placekitten.com/g/100/100" alt="" /></a>
     </div>
 
-    <div class="footer">
+    <div id="footer">
       
       <p>We need a footer.</p>
 
