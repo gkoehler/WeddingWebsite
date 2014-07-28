@@ -23,6 +23,7 @@
 
 #container {
 	.make-row();
+	margin:0px;
 }
 
 #weregettingmarried, 
@@ -31,9 +32,12 @@
 #registry,
 #gallery,
 #footer {
-
 	.make-md-column-offset(3);
 	.make-md-column(6);
+	.make-sm-column-offset(3);
+	.make-sm-column(6);
+	.make-xs-column-offset(1);
+	.make-xs-column(10);
 
 	padding-top:200px;
 	padding-bottom:200px;
@@ -42,6 +46,9 @@
 		text-align:center;
 		font-family: 'Great Vibes', cursive;
 		font-size:90px;
+		@media (max-width: @screen-sm-max) {
+			font-size: 50px;
+		}
 	}
 
 	p, form {
@@ -74,22 +81,38 @@
 	}
 }
 
+
 [data-scrollto] {
 	cursor: pointer;
 }
 
 #bigphoto {
-	.make-md-column(12);
+
+	background:url('../images/8bw-top-fullsize.jpg') center fixed no-repeat;
 	height:800px;
-	background-image:url('../images/8bw-top-fullsize.jpg');
 	position:relative;
 
+	@media (max-width: @screen-xs-max) {
+		background: none;
+		height: auto;
+	}
+
+	> img {
+		display:none;
+		@media (max-width: @screen-xs-max) {
+			display: block;
+			width:100%;
+		}
+	}
+
 	#logo {
-		position: fixed;
+		position: absolute;
+		
 		top: 0px;
 		left: 20px;
 		width: 220px;
 		height: 209px;
+
 		font-family: 'Great Vibes',cursive;
 		font-size: 50px;
 		color: white;
@@ -131,10 +154,18 @@
 			left: 84px;
 			-webkit-transform: rotate(-6deg);
 		}
+
+		@media (max-width: @screen-xs-max) {
+			position: relative;
+			left:0px;
+			margin-left: auto;
+			margin-right:auto;
+			margin-bottom: -209px;
+		}
 	}
 
 	#topmenu {
-
+		
 		position:fixed;
 		top:5px;
 		right:0px;
@@ -173,13 +204,34 @@
 				}
 			}
 		}
+
+		@media (max-width: @screen-xs-max) {
+			top:0px;
+			left:0px;
+			padding: 0px;
+
+			.arrowleft {
+				display: none;
+			}
+			ul {
+				text-align: center;
+				li a {
+					display: inline-block;
+				}
+			}
+		}
 	}
 
 	.scrolldown {
 		position: absolute;
 		right: 25px;
 		bottom: 35px;
+		// bottom:14vh;
 		
+		@media (max-width: @screen-xs-max) {
+			display: none;
+		}
+
 		.text {
 			display:block;
 			background-color: black;
@@ -205,19 +257,30 @@
 			border-top: 9px solid black;
 		}
 	}
+
+	// small screens: move logo below picture;
+	// remove "scroll down";
+	// make menu take up entire width across top
 }
 
-.2up {
-	.make-md-column-offset(3);
-	.make-md-column(6);
-	
+.twoup {
 	.make-row();
+	
+	a:nth-child(1) {
+	}
 
 	a {
+		.make-lg-column(4);
 		.make-md-column(6);
+		.make-sm-column(6);
+		.make-xs-column(12);
+		margin:0px;
+		padding: 0px;
 
 		img {
 			width:100%;
+			// width:50px;
+			// width:50%;
 		}
 	}
 }
