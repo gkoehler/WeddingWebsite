@@ -14,7 +14,9 @@
 	src: url(../fonts/CaviarDreams.ttf);
 }
 
-// use semantic html, not boostrap classes. Examples:  http://ruby.bvision.com/blog/please-stop-embedding-bootstrap-classes-in-your-html
+// use semantic html, not boostrap classes. 
+// Examples:  
+// http://ruby.bvision.com/blog/please-stop-embedding-bootstrap-classes-in-your-html
 
 
 // next up, add this gallery:
@@ -81,6 +83,24 @@
 	}
 }
 
+#gallery {
+	.make-md-column-offset(1);
+	.make-md-column(10);
+	.make-sm-column-offset(1);
+	.make-sm-column(10);
+	.make-xs-column-offset(1);
+	.make-xs-column(10);
+
+	a {
+		margin-bottom: 4px;
+		border:none;
+		img {
+			width:150px;
+			height: 150px;
+		}
+	}
+	
+}
 
 [data-scrollto] {
 	cursor: pointer;
@@ -118,11 +138,15 @@
 		color: white;
 		z-index:100;
 		
+		@mobile-logo-bg-color:black;
 
 		#logo-bg {
 			background-color:black;
 			width: 220px;
 			height: 106px;
+			@media (max-width: @screen-xs-max) {
+				background-color: @mobile-logo-bg-color;
+			}
 		}
 
 		#logo-arrow {
@@ -133,6 +157,9 @@
 			border-left: 110px solid transparent;
 			border-right: 110px solid transparent;
 			border-top: 38px solid black;
+			@media (max-width: @screen-xs-max) {
+				border-top-color: @mobile-logo-bg-color;
+			}
 		}
 
 		.michaela {

@@ -16,7 +16,13 @@ module.exports = function(grunt) {
         filter: 'isFile',
         expand: true,
         flatten:true,
-      }
+      },
+      lightbox: {
+        cwd: './src/lightbox/',
+        src: '**/*',
+        dest: './build/lightbox/',
+        expand:true,
+      },
     },
     replace: {
       livereload: {
@@ -47,6 +53,7 @@ module.exports = function(grunt) {
         src: [
           './bower_components/jquery/dist/jquery.js',
           './bower_components/bootstrap/dist/js/bootstrap.js',
+          './bower_components/lightbox/js/lightbox.min.js',
           './src/g-and-m.js'
         ],
         dest: './build/main.js',
@@ -80,6 +87,23 @@ module.exports = function(grunt) {
           crop: false
         },
       },
+      top_banner_thing_retina: {
+        files: [
+          {
+            expand:true,
+            flatten:true,
+            src: ['../original_pictures/top/*.jpg'],
+            dest: './build/images/',
+            ext: '-top-fullsize@2x.jpg'
+          },
+        ],
+        options: {
+          width: 2400,
+          height: 1900,
+          overwrite: false,
+          crop: false
+        },
+      },
       middle_thumbs: {
         files: [
           {
@@ -93,6 +117,24 @@ module.exports = function(grunt) {
         options: {
           width: 600,
           height: 400,
+          overwrite: false,
+          crop: true,
+          gravity: 'Center',
+        },
+      },
+      middle_thumbs_retina: {
+        files: [
+          {
+            expand:true,
+            flatten:true,
+            src: ['../original_pictures/middle/*.jpg'],
+            dest: './build/images/',
+            ext: '-middle-thumb@2x.jpg'
+          },
+        ],
+        options: {
+          width: 1200,
+          height: 800,
           overwrite: false,
           crop: true,
           gravity: 'Center',
@@ -116,6 +158,24 @@ module.exports = function(grunt) {
           gravity: 'Center',
         },
       },
+      middle_fullsize_retina: {
+        files: [
+          {
+            expand:true,
+            flatten:true,
+            src: ['../original_pictures/middle/*.jpg'],
+            dest: './build/images/',
+            ext: '-middle-fullsize@2x.jpg'
+          },
+        ],
+        options: {
+          width: 2400,
+          height: 1900,
+          overwrite: false,
+          crop: false,
+          gravity: 'Center',
+        },
+      },
       bottom_gallery_thumbs: {
         files: [
           {
@@ -127,8 +187,26 @@ module.exports = function(grunt) {
           },
         ],
         options: {
-          width: 100,
-          height: 100,
+          width: 150,
+          height: 150,
+          overwrite: false,
+          crop: true,
+          gravity: 'Center',
+        },
+      },
+      bottom_gallery_thumbs_retina: {
+        files: [
+          {
+            expand:true,
+            flatten:true,
+            src: ['../original_pictures/bottom_gallery/*.jpg'],
+            dest: './build/images/',
+            ext: '-bottom-thumb@2x.jpg'
+          },
+        ],
+        options: {
+          width: 300,
+          height: 300,
           overwrite: false,
           crop: true,
           gravity: 'Center',
@@ -151,13 +229,28 @@ module.exports = function(grunt) {
           crop: false
         },
       },
+      bottom_gallery_fullsize_retina: {
+        files: [
+          {
+            expand:true,
+            flatten:true,
+            src: ['../original_pictures/bottom_gallery/*.jpg'],
+            dest: './build/images/',
+            ext: '-bottom-fullsize@2x.jpg'
+          },
+        ],
+        options: {
+          width: 2400,
+          height: 1900,
+          overwrite: false,
+          crop: false
+        },
+      },
     },
     watch: {
       js_frontend: {
         files: [
           //watched files
-          './bower_components/jquery/dist/jquery.js',
-          './bower_components/bootstrap/dist/js/bootstrap.js',
           './src/g-and-m.js',
           './src/default.html'
           ],   
@@ -186,6 +279,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-image-resize');
   
   // Task definition
-  grunt.registerTask('default', ['copy', 'replace:livereload', 'less', 'concat', 'image_resize', 'watch']);
+  grunt.registerTask('default', ['copy', 'replace:livereload', 'less', 'concat', 'watch']);
+  grunt.registerTask('images', ['image_resize']);
   grunt.registerTask('finalize', ['copy', 'less', 'concat', 'uglify', 'image_resize'])
 };

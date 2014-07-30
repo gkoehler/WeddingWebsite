@@ -14,4 +14,19 @@ $(function(){
 	    }, 500);
 	    return false;
 	});
+
+	
+
+	// reeetinaaaaaaa!
+	// works on <img> tags. for background-image, use css replacement.
+	// results in a 16mb site... let's probably not do this. :S
+	// if (window.devicePixelRatio > 1) {
+ //        $('img').each(function(i) {
+ //            var lowres = $(this).attr('src');
+ //            var highres = lowres.replace(".", "@2x.");
+ //            $(this).attr('src', highres);
+ //        });
+
+ //    }
 });
+ 
