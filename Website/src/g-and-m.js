@@ -15,7 +15,13 @@ $(function(){
 	    return false;
 	});
 
-	
+	$(document).scroll(function(){
+		var scrollAmount = $(document).scrollTop();
+		console.log('center ' +- scrollAmount / 4 + 'px');
+		$('#bigphoto').css({
+			'background-position':'center ' +- scrollAmount / 4 + 'px'
+		});
+	});
 
 	// reeetinaaaaaaa!
 	// works on <img> tags. for background-image, use css replacement.

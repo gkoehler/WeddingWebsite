@@ -53,7 +53,6 @@ module.exports = function(grunt) {
         src: [
           './bower_components/jquery/dist/jquery.js',
           './bower_components/bootstrap/dist/js/bootstrap.js',
-          './bower_components/lightbox/js/lightbox.min.js',
           './src/g-and-m.js'
         ],
         dest: './build/main.js',
@@ -81,8 +80,8 @@ module.exports = function(grunt) {
           },
         ],
         options: {
-          width: 1200,
-          height: 950,
+          width: 1800,
+          height: 1425,
           overwrite: false,
           crop: false
         },
@@ -98,8 +97,8 @@ module.exports = function(grunt) {
           },
         ],
         options: {
-          width: 2400,
-          height: 1900,
+          width: 3600,
+          height: 2850,
           overwrite: false,
           crop: false
         },
@@ -115,8 +114,8 @@ module.exports = function(grunt) {
           },
         ],
         options: {
-          width: 600,
-          height: 400,
+          width: 767,
+          height: 511,
           overwrite: false,
           crop: true,
           gravity: 'Center',
