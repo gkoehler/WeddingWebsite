@@ -14,3 +14,6 @@ class RSVPLog(models.Model):
 	ip_address = models.CharField(max_length=200)
 	num_rsvpd = models.IntegerField()
 	timestamp = models.DateTimeField('Date Submitted', auto_now=True)
+
+	class Meta:
+		ordering = ["-timestamp"]
