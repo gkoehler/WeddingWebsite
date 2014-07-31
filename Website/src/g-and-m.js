@@ -7,7 +7,7 @@ $(function(){
 	    }, 500);
 	});
 
-	$("a[href^='#']").click(function() {
+	$("#topmenu a[href^='#']").click(function() {
 		var scrollTo = $(this).attr('href');
 		$('html, body').animate({
 	        scrollTop: $(scrollTo).offset().top
@@ -17,7 +17,6 @@ $(function(){
 
 	$(document).scroll(function(){
 		var scrollAmount = $(document).scrollTop();
-		console.log('center ' +- scrollAmount / 4 + 'px');
 		$('#bigphoto').css({
 			'background-position':'center ' +- scrollAmount / 4 + 'px'
 		});
@@ -34,5 +33,42 @@ $(function(){
  //        });
 
  //    }
+
+ 	// RSVP system
+ 	// 1. user searches their name:
+ 	$('#guestsearch form').submit(function() {
+ 		$('#guestsearch').fadeOut(function(){
+ 			// ajax here for loading those results
+ 			// $.ajax('url').done(function(data){
+
+ 			// })
+ 			var template = $('#guestsearchresultstemplate').html();
+ 			var rendered = $.mustache(template, {
+ 				people: [{
+ 					id:1,
+ 					name:'Mr. & Mrs. Joseph Hamilton'
+ 				},{
+ 					id:2,
+ 					name:'Mrs. Lydia Hamilton'
+ 				},{
+ 					id:3,
+ 					name:'Mr. Stephan Hamilton'
+ 				}]
+ 			});
+ 			$('#guestsearchresults').html(rendered);
+	 		$('#guestsearchresults').fadeIn();
+ 		});
+ 		return false;
+ 	});
+
+ 	// start over:
+ 	$('#RSVP').on('click', 'a.goback', function() {
+ 		$('#rsvperror, #guestsearchresults, #attendance, #confirmation, #confirmationdecline').fadeOut(function(){
+ 			$('#guestsearch').fadeIn();
+ 		});
+ 		
+ 		return false;
+ 	});
+
 });
  

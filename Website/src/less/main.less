@@ -47,7 +47,7 @@
 		}
 	}
 
-	p, form {
+	p, form, li, td {
 		text-align:center;
 		font-family: 'Open Sans Condensed', sans-serif;
 		font-size:20px;
@@ -71,9 +71,50 @@
 			background-color:#555;
 		}
 	}
+}
 
-	#guestsearchresults {
-		// display:none;
+#RSVP {
+	
+	input[type="text"] {
+		width:200px;
+	}
+
+	p.nav {
+		width: 300px;
+		margin-left: auto;
+		margin-right: auto;
+		
+		position: relative;
+
+		.goback.left {
+			text-align: left;
+			position: absolute;
+			left:0px;
+			top:4px;
+		}
+
+		input[type="submit"] {
+			position: absolute;
+			right:0px;
+		}
+	}
+
+	ul {
+		list-style-type: none;
+		margin:0px;
+		padding: 0px 0px 1em;
+		li {
+		
+		}
+	}
+
+	#attendance form {
+		width: 300px;
+		margin-left: auto;
+		margin-right: auto;
+		p {
+			text-align: left;
+		}
 	}
 }
 

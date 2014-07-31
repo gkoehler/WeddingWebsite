@@ -76,33 +76,79 @@
 
     <div id="RSVP">
       <h2>RSVP</h2>
-      <p>To RSVP for this event, please search your name below and select the number of guests who will be attending.</p>
-      <form id="nameform">
-        <label for="firstname">First Name</label>
-        <input id="firstname" name="firstname" type="text" />
-        <label for="lastname">Last Name</label>
-        <input id="lastname" name="lastname" type="text" />
-        <input type="submit" value="Search" />
-      </form>
-      <div id="guestsearchresults">
-        <div class="resultslabel">Guests:</div>
-        <table>
-          <tr>
-            <td>John Doe</td>
-            <td><input type="radio" name="attendance1" id="attendance1a" value="attending" /><label for="attendance1a">Attending</label></td>
-            <td><input type="radio" name="attendance1" id="attendance1b" value="notattending" /><label for="attendance1b">Not Attending</label></td>
-          </tr>
-          <tr>
-            <td>John Doe</td>
-            <td><input type="radio" name="attendance2" id="attendance2a" value="attending" /><label for="attendance2a">Attending</label></td>
-            <td><input type="radio" name="attendance2" id="attendance2b" value="notattending" /><label for="attendance2b">Not Attending</label></td>
-          </tr>
-          <tr>
-            <td>John Doe</td>
-            <td><input type="radio" name="attendance3" id="attendance3a" value="attending" /><label for="attendance3a">Attending</label></td>
-            <td><input type="radio" name="attendance3" id="attendance3b" value="notattending" /><label for="attendance3b">Not Attending</label></td>
-          </tr>
-        </table>
+      <div id="guestsearch" style="display:block;">
+        <p>To RSVP for this event, please enter your name below.</p>
+        <form id="nameform">
+          <label for="lastname">Your Last Name:</label>
+          <input id="lastname" name="lastname" type="text" />
+          <input type="submit" value="Search" />
+        </form>
+      </div>
+      <div id="rsvperror" style="display:none;">
+        <p><span class="glyphicon glyphicon-remove"></span>
+        Sorry, there was an error in the RSVP system.<br />
+          Please <a href="mailto:gkoehler@gmail.com?subject=RSVP">send your RSVP to Gavin &amp; Michaela directly</a>.</p>
+        <p class="nav">
+            <a class="goback" href="#">Start Over</a>
+        </p>
+      </div>
+      <div id="guestsearchresults" style="display:none;"></div>
+      <script id="guestsearchresultstemplate" type="x-tmpl-mustache">
+          {{#people.length}}
+            <p>Please choose your name from the search results below:</p>
+          {{/people.length}}
+          <ul>
+            {{#people}}
+              <li><a href="#{{id}}">{{name}}</a></li>
+            {{/people}}
+            {{^people}}
+              <li><span class="glyphicon glyphicon-remove"></span>
+              No results were found.<br />Try a different search, or just <a href="mailto:gkoehler@gmail.com?subject=RSVP">send your RSVP to Gavin &amp; Michaela directly</a>.</li>
+            {{/people}}
+          </ul>
+          <p class="nav">
+              <a class="goback" href="#">Start Over</a>
+          </p>
+        </script>
+      <div id="attendance" style="display:none;">
+        <p>Mr. &amp; Mrs. Joseph Hamilton:</p>
+        <form id="attendingform">
+          <p>
+          <input type="radio" name="attendance1" id="attendance1a" value="attending" />
+          Yes, 
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+            of us will be attending
+          </p>
+          <p>
+            <input type="radio" name="attendance1" id="attendance1b" value="notattending" />
+            Sorry, we will not be attending
+          </p>
+          <p class="nav">
+            <a class="goback left" href="#">Start Over</a>
+            <input type="submit" value="Save" />
+          </p>
+        </form>
+      </div>
+      <div id="confirmation" style="display:none;">
+        <p>Mr. &amp; Mrs. Joseph Hamilton:</p>
+        <p>We have your RSVP! Thanks, we look forward to seeing you.</p>
+        <p class="nav">
+          <a class="goback" href="#">Start Over</a>
+        </p>
+      </div>
+      <div id="confirmationdecline" style="display:none;">
+        <p>Mr. &amp; Mrs. Joseph Hamilton:</p>
+        <p>Thanks for letting us know!<br />
+        We look forward to seeing you another time.</p>
+        <p class="nav">
+          <a class="goback" href="#">Start Over</a>
+        </p>
       </div>
     </div>
 

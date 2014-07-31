@@ -17,6 +17,12 @@ module.exports = function(grunt) {
         expand: true,
         flatten:true,
       },
+      bootstrap_fonts: {
+        cwd: './bower_components/bootstrap/fonts/',
+        src: '**/*',
+        dest: './build/fonts/',
+        expand:true,
+      },
       lightbox: {
         cwd: './src/lightbox/',
         src: '**/*',
@@ -53,6 +59,9 @@ module.exports = function(grunt) {
         src: [
           './bower_components/jquery/dist/jquery.js',
           './bower_components/bootstrap/dist/js/bootstrap.js',
+          './bower_components/mustache/wrappers/jquery/mustache.js.pre',
+          './bower_components/mustache/mustache.js',
+          './bower_components/mustache/wrappers/jquery/mustache.js.post',
           './src/g-and-m.js'
         ],
         dest: './build/main.js',
