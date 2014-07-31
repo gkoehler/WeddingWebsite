@@ -1,6 +1,11 @@
 # GavinAndMichaela.com
 
-Readme for this awesome site.
+Here's our awesome wedding site. Some of the neat features:
+
+* Single-page, with hyperlinks at the top that let you "jump" to a section
+* Scales nicely down to tablet and mobile sizes
+* Based on bootstrap
+* Uses LESS and grunt 
 
 # Running
 
