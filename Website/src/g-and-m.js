@@ -35,7 +35,7 @@ $(function(){
  //    }
 
  	// RSVP system
- 	var base = 'http://127.0.0.1:8000/rsvps';
+ 	var base = 'http://api.gavinandmichaela.com/rsvps';
  	// 0. handle errors:
  	var handleError = function(){
  		$('#guestsearch, #guestsearchresults, #attendance, #confirmation, #confirmationdecline').fadeOut(function(){
