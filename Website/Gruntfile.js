@@ -260,7 +260,7 @@ module.exports = function(grunt) {
         files: [
           //watched files
           './src/g-and-m.js',
-          './src/default.html'
+          './src/index.html'
           ],   
         tasks: ['copy', 'replace:livereload', 'less', 'concat'],     //tasks to run
         options: {
