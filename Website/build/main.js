@@ -11931,33 +11931,56 @@ $(function(){
  //    }
 
  	// RSVP system
+ 	var base = 'http://127.0.0.1:8000/rsvps';
+ 	// 0. handle errors:
+ 	$(document).ajaxError(function(){
+ 		$('#guestsearch, #guestsearchresults, #attendance, #confirmation, #confirmationdecline').fadeOut(function(){
+ 			$('#rsvperror').fadeIn();
+ 		});
+ 	});
  	// 1. user searches their name:
  	$('#guestsearch form').submit(function() {
+ 		// validate
+ 		var searchtext = $('#guestsearch #lastname').val();
+		if(searchtext.length == 0) {
+			return false;
+		}
+		// animate out
  		$('#guestsearch').fadeOut(function(){
- 			// ajax here for loading those results
- 			// $.ajax('url').done(function(data){
-
- 			// })
- 			var template = $('#guestsearchresultstemplate').html();
- 			var rendered = $.mustache(template, {
- 				people: [{
- 					id:1,
- 					name:'Mr. & Mrs. Joseph Hamilton'
- 				},{
- 					id:2,
- 					name:'Mrs. Lydia Hamilton'
- 				},{
- 					id:3,
- 					name:'Mr. Stephan Hamilton'
- 				}]
+ 			// data
+ 			$.get(base + '/search/' + encodeURIComponent(searchtext)).done(function(searchResults){
+ 				var template = $('#guestsearchresultstemplate').html();
+	 			var rendered = $.mustache(template, {
+	 				people: searchResults
+	 			});
+	 			$('#guestsearchresults').html(rendered);
+	 			// animate in
+		 		$('#guestsearchresults').fadeIn();
  			});
- 			$('#guestsearchresults').html(rendered);
-	 		$('#guestsearchresults').fadeIn();
  		});
  		return false;
  	});
 
- 	// start over:
+ 	// 2. user selects their name:
+ 	$('#guestsearchresults').on('click', 'li a', function(){
+ 		// validate / find what they chose
+ 		var guestid = $(this).attr('href').substr(1);
+ 		// animate out
+ 		$('#guestsearchresults').fadeOut(function(){
+ 			// data
+ 			$.ajax({
+ 				url:base + '/' + guestid,
+ 				success: function(data){
+ 					// animate in
+ 					$('#attendance').fadeIn();
+ 					console.log(data);
+
+ 				}
+ 			})
+ 		});
+ 	});
+
+ 	// 00. start over:
  	$('#RSVP').on('click', 'a.goback', function() {
  		$('#rsvperror, #guestsearchresults, #attendance, #confirmation, #confirmationdecline').fadeOut(function(){
  			$('#guestsearch').fadeIn();
