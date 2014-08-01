@@ -89,6 +89,7 @@ $(function(){
  				}
  			});
  		});
+ 		return false;
  	});
 
  	// 3. user saves their attendance
