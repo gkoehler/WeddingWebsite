@@ -113,7 +113,7 @@
         <div id="attendance" style="display:none;"></div>
         <script id="attendancetemplate" type="x-tmpl-mustache">
           <p>{{name}}</p>
-          <form id="attendingform" data-guestid="{{id}}">
+          <form id="attendingform" data-guestid="{{id}}" data-guestname="{{name}}">
             <p>
               <input type="radio" name="attendance-radio" id="isattending" value="attending" checked="checked" />
               <label for="isattending">
@@ -138,21 +138,23 @@
             </p>
           </form>
         </script>
-      <div id="confirmation" style="display:none;">
-        <p>Mr. &amp; Mrs. Joseph Hamilton:</p>
-        <p>We have your RSVP! Thanks, we look forward to seeing you.</p>
-        <p class="nav">
-          <a class="goback" href="#">Start Over</a>
-        </p>
-      </div>
-      <div id="confirmationdecline" style="display:none;">
-        <p>Mr. &amp; Mrs. Joseph Hamilton:</p>
-        <p>Thanks for letting us know!<br />
-        We look forward to seeing you another time.</p>
-        <p class="nav">
-          <a class="goback" href="#">Start Over</a>
-        </p>
-      </div>
+        <div id="confirmation" style="display:none;"></div>
+        <script id="confirmationtemplate" type="x-tmpl-mustache">
+          <p>{{name}}</p>
+          <p>We have your RSVP! Thanks, we look forward to seeing you.</p>
+          <p class="nav">
+            <a class="goback" href="#">Start Over</a>
+          </p>
+        </script>
+        <div id="confirmationdecline" style="display:none;"></div>
+        <script id="confirmationdeclinetemplate" type="x-tmpl-mustache">
+          <p>{{name}}</p>
+          <p>Thanks for letting us know!<br />
+          We look forward to seeing you another time.</p>
+          <p class="nav">
+            <a class="goback" href="#">Start Over</a>
+          </p>
+        </script>
     </div>
 
     <div class="twoup">

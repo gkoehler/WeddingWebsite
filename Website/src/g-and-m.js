@@ -85,10 +85,7 @@ $(function(){
  					};
  					var template = $('#attendancetemplate').html();
  					var rendered = $.mustache(template, data);
- 					$('#attendance').html(rendered);
- 					// animate in
- 					$('#attendance').fadeIn();
-
+ 					$('#attendance').html(rendered).fadeIn();
  				}
  			});
  		});
@@ -103,6 +100,7 @@ $(function(){
 	 		num_rsvpd = $('select[name="num_attending"]').val();
  		}
  		var guestid = $(this).data('guestid');
+ 		var guestname = $(this).data('guestname');
  		// animate out
  		$('#attendance').fadeOut(function() {
  			// data
@@ -117,9 +115,13 @@ $(function(){
  						handleError();
  					} else {
  						if(isAttending) {
- 							$('#confirmation').fadeIn();
+ 							var template = $('#confirmationtemplate').html();
+ 							var rendered = $.mustache(template, { name:guestname });
+ 							$('#confirmation').html(rendered).fadeIn();
  						} else {
- 							$('#confirmationdecline').fadeIn();
+ 							var template = $('#confirmationdeclinetemplate').html();
+ 							var rendered = $.mustache(template, { name:guestname });
+ 							$('#confirmationdecline').html(rendered).fadeIn();
  						}
  					}
  				}
