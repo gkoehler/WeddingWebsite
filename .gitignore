@@ -3,3 +3,6 @@ Website/build/images/
 ENV
 rsvps/fixtures/
 gamapi
+fabfile.py
+*.pyc
+htaccess-webfaction.txt

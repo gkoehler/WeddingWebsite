@@ -134,6 +134,7 @@ $(function(){
  	// 00. start over:
  	var startOver = function() {
  		$('#rsvperror, #guestsearchresults, #attendance, #confirmation, #confirmationdecline').fadeOut(function(){
+ 			$('#guestsearch #lastname').val('');
  			$('#guestsearch').fadeIn();
  		});
  		

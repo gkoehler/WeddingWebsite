@@ -51,12 +51,16 @@
 		text-align:center;
 		font-family: 'Open Sans Condensed', sans-serif;
 		font-size:20px;
+		padding-left: 10px;
+		padding-right: 10px;
 
 	}
 
 	.actionbuttons {
 		
 		text-align:center;
+
+		line-height: 3em;
 
 		a {
 			text-transform:uppercase;
@@ -132,6 +136,7 @@
 	width:@gallery-width;
 	margin-left: auto;
 	margin-right: auto;
+	font-size: 0;
 
 	a {
 		margin-bottom: 4px;
@@ -142,11 +147,15 @@
 		}
 	}
 
+	// 318 = image_width * 3 + image_padding*6
 
 	@media (max-width: @gallery-width) {
-		width:332px;
+		width:320px;
+		padding:1px;
+
 		a {
 			margin:0px;
+			padding:3px;
 			img {
 				width:100px;
 				height: auto;
@@ -246,11 +255,11 @@
 	}
 
 	#topmenu {
-		
 		position:fixed;
 		top:5px;
 		right:0px;
 		z-index: 100;
+
 		.arrowleft {
 			position: absolute;
 			left: -52px;
@@ -296,6 +305,7 @@
 			}
 			ul {
 				text-align: center;
+				padding:0px;
 				li a {
 					display: inline-block;
 				}
