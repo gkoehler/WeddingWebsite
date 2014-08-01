@@ -32,6 +32,8 @@ nosetests.xml
 
 # Mr Developer
 local_settings.py
+local_settings_prod.py
+fabfile.py
 
 # Environment
 ENV

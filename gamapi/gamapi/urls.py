@@ -5,15 +5,15 @@ from rsvps import views
 
 admin.autodiscover()
 
-router = routers.DefaultRouter()
-router.register(r'invitees', views.InviteeViewSet)
+# router = routers.DefaultRouter()
+# router.register(r'invitees', views.InviteeViewSet)
 
 urlpatterns = patterns('',
 	
-	url(r'^', include(router.urls)),
+	# url(r'^', include(router.urls)),
 
-    # url(r'^rsvps/', include('rsvps.urls')),
+    url(r'^', include('rsvps.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 )
