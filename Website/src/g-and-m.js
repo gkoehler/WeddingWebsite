@@ -37,11 +37,12 @@ $(function(){
  	// RSVP system
  	var base = 'http://127.0.0.1:8000/rsvps';
  	// 0. handle errors:
- 	$(document).ajaxError(function(){
+ 	var handleError = function(){
  		$('#guestsearch, #guestsearchresults, #attendance, #confirmation, #confirmationdecline').fadeOut(function(){
  			$('#rsvperror').fadeIn();
  		});
- 	});
+ 	};
+ 	$(document).ajaxError(handleError);
  	// 1. user searches their name:
  	$('#guestsearch form').submit(function() {
  		// validate
@@ -75,23 +76,67 @@ $(function(){
  			$.ajax({
  				url:base + '/' + guestid,
  				success: function(data){
+ 					data.num_allowed_array = function() {
+ 						var ret = [];
+ 						for (var i = 1; i <= data.num_allowed; i++) {
+ 							ret.push({'num':i, 'checked':(i==data.num_allowed)});
+ 						};
+ 						return ret;
+ 					};
+ 					var template = $('#attendancetemplate').html();
+ 					var rendered = $.mustache(template, data);
+ 					$('#attendance').html(rendered);
  					// animate in
  					$('#attendance').fadeIn();
- 					console.log(data);
 
  				}
- 			})
+ 			});
  		});
  	});
 
+ 	// 3. user saves their attendance
+ 	$('#attendance').on('submit', 'form#attendingform', function(){
+ 		// validate / gather data
+ 		var isAttending = ($('[name="attendance-radio"]:checked', this).val() == 'attending');
+ 		var num_rsvpd = 0;
+ 		if(isAttending) {
+	 		num_rsvpd = $('select[name="num_attending"]').val();
+ 		}
+ 		var guestid = $(this).data('guestid');
+ 		// animate out
+ 		$('#attendance').fadeOut(function() {
+ 			// data
+ 			$.ajax({
+ 				url:base + '/' + guestid,
+ 				type:'POST',
+ 				dataType:'json',
+ 				data: {'num_rsvpd':num_rsvpd},
+ 				success: function(data) {
+ 					if(data.detail) {
+ 						alert(data.detail);
+ 						handleError();
+ 					} else {
+ 						if(isAttending) {
+ 							$('#confirmation').fadeIn();
+ 						} else {
+ 							$('#confirmationdecline').fadeIn();
+ 						}
+ 					}
+ 				}
+ 			});
+ 		});
+ 		return false;
+ 	});
+
  	// 00. start over:
- 	$('#RSVP').on('click', 'a.goback', function() {
+ 	var startOver = function() {
  		$('#rsvperror, #guestsearchresults, #attendance, #confirmation, #confirmationdecline').fadeOut(function(){
  			$('#guestsearch').fadeIn();
  		});
  		
  		return false;
- 	});
+ 	};
+ 	$('#RSVP').on('click', 'a.goback', startOver);
 
 });
  
