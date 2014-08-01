@@ -35,10 +35,18 @@ Load `build/default.html` in your browser.
 
 # Editing
 
-Open iTerm to the 'Website' directory and type `grunt`. Will automatically insert livereload stuff. 
+Open iTerm to the `Website` directory and type `grunt`. Will automatically insert livereload stuff. 
 
 Adding a grunt plugin: `npm install grunt-plugin-name --save-dev`
 
 # Publishing
 
-    grunt finalize && git push
+Publishing updates to the site:
+
+    cd Website
+    fab deploy_prod
+
+If the images need to be re-transferred:
+
+    fab deploy_prod:True
+
