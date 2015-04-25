@@ -1,0 +1,385 @@
+// Import Bootstrap source
+@import '../../bower_components/bootstrap/less/bootstrap.less';
+
+// Import your LESS files here
+//@import 'variables';    // Will import ./less/variables.less
+//@import 'signup';
+
+// grab our google fonts:
+@import url(http://fonts.googleapis.com/css?family=Great+Vibes|Open+Sans+Condensed:300,700);
+
+// add our custom fonts from file:
+@font-face {
+	font-family:caviar-dreams;
+	src: url(../fonts/CaviarDreams.ttf);
+}
+
+// use semantic html, not boostrap classes. 
+// Examples:  
+// http://ruby.bvision.com/blog/please-stop-embedding-bootstrap-classes-in-your-html
+
+
+// next up, add this gallery:
+// https://github.com/blueimp/Bootstrap-Image-Gallery
+
+
+#container {
+	.make-row();
+	margin:0px;
+}
+
+#weregettingmarried, 
+#RSVP,
+#accommodations, 
+#registry,
+#gallery,
+#footer {
+	
+	padding-top:200px;
+	padding-bottom:200px;
+
+	h2 {
+		text-align:center;
+		font-family: 'Great Vibes', cursive;
+		font-size:90px;
+		@media (max-width: @screen-sm-max) {
+			font-size: 50px;
+		}
+	}
+
+	p, form, li, td {
+		text-align:center;
+		font-family: 'Open Sans Condensed', sans-serif;
+		font-size:20px;
+		padding-left: 10px;
+		padding-right: 10px;
+
+	}
+
+	.actionbuttons {
+		
+		text-align:center;
+
+		line-height: 3em;
+
+		a {
+			text-transform:uppercase;
+			font-weight:bold;
+
+			color:white;
+			background-color:#666;
+			padding:5px 10px;
+		}
+		a:hover {
+			text-decoration:none;
+			background-color:#555;
+		}
+	}
+}
+
+#RSVP {
+	
+	input[type="text"] {
+		width:200px;
+	}
+
+	p.nav {
+		width: 300px;
+		margin-left: auto;
+		margin-right: auto;
+		
+		position: relative;
+
+		.goback.left {
+			text-align: left;
+			position: absolute;
+			left:0px;
+			top:4px;
+		}
+
+		input[type="submit"] {
+			position: absolute;
+			right:0px;
+		}
+	}
+
+	ul {
+		list-style-type: none;
+		margin:0px;
+		padding: 0px 0px 1em;
+		li {
+		
+		}
+	}
+
+	p.attendeename {
+		font-weight: bold;
+	}
+
+	#attendance form {
+		width: 300px;
+		margin-left: auto;
+		margin-right: auto;
+		p {
+			text-align: left;
+		}
+		label {
+			font-weight: normal;
+		}
+	}
+}
+
+#footer {
+	padding-top:50px;
+	padding-bottom: 50px;
+	color:white;
+	background-color: black;
+}
+
+#gallery {
+	@gallery-width: 806px;
+	// .make-md-column-offset(1);
+	position: relative;
+	width:@gallery-width;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 0;
+
+	a {
+		margin-bottom: 4px;
+		border:none;
+		img {
+			width:150px;
+			height: 150px;
+		}
+	}
+
+	// 318 = image_width * 3 + image_padding*6
+
+	@media (max-width: @gallery-width) {
+		width:320px;
+		padding:1px;
+
+		a {
+			margin:0px;
+			padding:3px;
+			img {
+				width:100px;
+				height: auto;
+			}
+		}
+	}
+
+}
+
+[data-scrollto] {
+	cursor: pointer;
+}
+
+#bigphoto {
+
+	background:url('../images/8bw-top-fullsize.jpg') center 0px fixed no-repeat;
+	height:800px;
+	position:relative;
+
+	@media (max-width: @screen-xs-max) {
+		background: none;
+		height: auto;
+	}
+
+	> img {
+		display:none;
+		@media (max-width: @screen-xs-max) {
+			display: block;
+			width:100%;
+		}
+	}
+
+	#logo {
+		position: absolute;
+		
+		top: 0px;
+		left: 20px;
+		width: 220px;
+		height: 209px;
+
+		font-family: 'Great Vibes',cursive;
+		font-size: 50px;
+		color: white;
+		z-index:100;
+		
+		@mobile-logo-bg-color:black;
+
+		#logo-bg {
+			background-color:black;
+			width: 220px;
+			height: 106px;
+			@media (max-width: @screen-xs-max) {
+				background-color: @mobile-logo-bg-color;
+			}
+		}
+
+		#logo-arrow {
+			position: absolute;
+			bottom: 0px;
+			height: 103px;
+			width: 220px;
+			border-left: 110px solid transparent;
+			border-right: 110px solid transparent;
+			border-top: 38px solid black;
+			@media (max-width: @screen-xs-max) {
+				border-top-color: @mobile-logo-bg-color;
+			}
+		}
+
+		.michaela {
+			position: absolute;
+			top: 3px;
+			left: 14px;
+			-webkit-transform: rotate(-6deg);
+		}
+		.amp {
+			position: absolute;
+			top: 48px;
+			left: 35px;
+			color: #666;
+			font-size: 56px;
+		}
+		.gavin {
+			position: absolute;
+			top: 51px;
+			left: 84px;
+			-webkit-transform: rotate(-6deg);
+		}
+
+		@media (max-width: @screen-xs-max) {
+			position: relative;
+			left:0px;
+			margin-left: auto;
+			margin-right:auto;
+			margin-bottom: -209px;
+		}
+	}
+
+	#topmenu {
+		position:fixed;
+		top:5px;
+		right:0px;
+		z-index: 100;
+
+		.arrowleft {
+			position: absolute;
+			left: -52px;
+			height: 100%;
+			width: 52px;
+			border-top: 15px solid transparent;
+			border-bottom: 15px solid transparent;
+			border-right: 10px solid rgba(255,255,255,0.6);
+		}
+
+		ul {
+			margin:0px;
+			padding:5px;
+			list-style-type: none;
+			background-color:rgba(255,255,255,0.6);
+
+			li {
+				display:inline;
+				text-transform:uppercase;
+				font-weight:bold;
+				font-family: 'Open Sans Condensed', sans-serif;
+
+				a {
+					color:#333;
+					
+					padding-right: 10px;
+				}
+
+				a:hover {
+					text-decoration: none;
+					color:#666;
+				}
+			}
+		}
+
+		@media (max-width: @screen-xs-max) {
+			top:0px;
+			left:0px;
+			padding: 0px;
+
+			.arrowleft {
+				display: none;
+			}
+			ul {
+				text-align: center;
+				padding:0px;
+				li a {
+					display: inline-block;
+				}
+			}
+		}
+	}
+
+	.scrolldown {
+		position: absolute;
+		right: 25px;
+		bottom: 35px;
+		// bottom:14vh;
+		
+		@media (max-width: @screen-xs-max) {
+			display: none;
+		}
+
+		.text {
+			display:block;
+			background-color: black;
+			padding: 10px 6px 4px;
+			font-family: 'caviar-dreams', sans-serif;
+			color: white;
+			text-align: center;
+			line-height: 14px;
+			text-transform: uppercase;
+		}
+
+		.text:hover {
+			text-decoration: none;
+		}
+
+		.arrowdown {
+			position: absolute;
+			bottom: -12px;
+			height: 12px;
+			width: 100%;
+			border-left: 30px solid transparent;
+			border-right: 30px solid transparent;
+			border-top: 9px solid black;
+		}
+	}
+
+	// small screens: move logo below picture;
+	// remove "scroll down";
+	// make menu take up entire width across top
+}
+
+.twoup {
+	.make-row();
+	margin:0px;
+	a:nth-child(1) {
+	}
+
+	a {
+		.make-lg-column(4);
+		.make-md-column(6);
+		.make-sm-column(6);
+		.make-xs-column(12);
+		margin:0px;
+		padding: 0px;
+
+		img {
+			width:100%;
+			// width:50px;
+			// width:50%;
+		}
+	}
+}
+

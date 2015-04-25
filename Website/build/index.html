@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="We're getting married!">
+  <meta name="author" content="Designed by Michaela and coded by Gavin.">
+  <!-- <link rel="icon" href="../../favicon.ico"> -->
+
+  <title>Gavin &amp; Michaela</title>
+
+  <link href="lightbox/css/lightbox.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div id="container">
+
+    <div id="bigphoto">
+      <img src="images/8bw-top-fullsize.jpg" />
+      <div id="logo" data-scrollto="#bigphoto">
+        <div id="logo-arrow"></div>
+        <div id="logo-bg">
+          <div class="michaela">Michaela</div>
+          <div class="amp">&amp;</div>
+          <div class="gavin">Gavin</div>
+          <div class="arrowdown"></div>
+        </div>
+      </div>
+      
+      <div id="topmenu">
+        <div class="arrowleft"></div>
+        <ul>
+          <li><a href="#weregettingmarried">Wedding</a></li>
+          <li><a href="#RSVP">RSVP</a></li>
+          <li><a href="#accommodations">Accommodations</a></li>
+          <li><a href="#registry">Registry</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+        </ul>
+      </div>
+      
+      <div class="scrolldown">
+        <div class="text" data-scrollto="#weregettingmarried">
+          Scroll<br />Down
+        </div>
+        <div class="arrowdown"></div>
+      </div>
+    </div>
+    
+    
+
+    <div id="weregettingmarried">
+      <h2>We're getting married!</h2>
+
+      <p>Michaela and Gavin are getting married on October 3, 2014 at 7PM. The ceremony and reception will take place at the Omar Arts &amp; Events Center.</p>
+
+      <p>4383 Nicholas Street, Omaha, Nebraska 68131</p>
+
+      <div class="actionbuttons">
+        <a target="_blank" href="http://goo.gl/8PTNuL">View Map</a>
+      </div>
+    </div>
+
+    <div class="twoup">
+        <a data-lightbox="us1" href="images/35bw-middle-fullsize.jpg">
+          <img src="images/35bw-middle-thumb.jpg" alt="" />
+        </a>
+        <a data-lightbox="us1" href="images/67bw-middle-fullsize.jpg">
+          <img src="images/67bw-middle-thumb.jpg" alt="" />
+        </a>
+    </div>
+
+
+    <div id="RSVP">
+      <h2>RSVP</h2>
+      <div id="rsvpdone">
+        <p>We are all booked! To make changes to your RSVP, please <a href="mailto:gkoehler@gmail.com?subject=RSVP">send us a message</a>.
+      </div>
+      <div id="guestsearch" style="display:none;">
+        <p>To RSVP for this event, please enter your name below.</p>
+        <form id="nameform">
+          <label for="lastname">Your Last Name:</label>
+          <input id="lastname" name="lastname" type="text" />
+          <input type="submit" value="Search" />
+        </form>
+      </div>
+      <div id="rsvperror" style="display:none;">
+        <p><span class="glyphicon glyphicon-remove"></span>
+        Sorry, there was an error in the RSVP system.<br />
+          Please <a href="mailto:gkoehler@gmail.com?subject=RSVP">send your RSVP to Gavin &amp; Michaela directly</a>.</p>
+        <p class="nav">
+            <a class="goback" href="#">Start Over</a>
+        </p>
+      </div>
+      <div id="guestsearchresults" style="display:none;"></div>
+      <script id="guestsearchresultstemplate" type="x-tmpl-mustache">
+          {{#people.length}}
+            <p>Please choose your name from the search results below:</p>
+          {{/people.length}}
+          <ul>
+            {{#people}}
+              <li><a href="#{{id}}">{{name}}</a></li>
+            {{/people}}
+            {{^people}}
+              <li><span class="glyphicon glyphicon-remove"></span>
+              No results were found.<br />Try a different search, or just <a href="mailto:gkoehler@gmail.com?subject=RSVP">send your RSVP to Gavin &amp; Michaela directly</a>.</li>
+            {{/people}}
+          </ul>
+          <p class="nav">
+              <a class="goback" href="#">Start Over</a>
+          </p>
+        </script>
+        <div id="attendance" style="display:none;"></div>
+        <script id="attendancetemplate" type="x-tmpl-mustache">
+          <p class="attendeename">{{name}}</p>
+          <form id="attendingform" data-guestid="{{id}}" data-guestname="{{name}}">
+            <p>
+              <input type="radio" name="attendance-radio" id="isattending" value="attending" checked="checked" />
+              <label for="isattending">
+                Yes, 
+                  <select name="num_attending">
+                    {{#num_allowed_array}}
+                      <option value="{{num}}" selected="{{checked}}">{{num}}</option>
+                    {{/num_allowed_array}}
+                  </select>
+                  of us will be attending
+              </label>
+            </p>
+            <p>
+              <input type="radio" name="attendance-radio" id="isnotattending" value="notattending" />
+              <label for="isnotattending">
+                We decline with regrets
+              </label>
+            </p>
+            <p class="nav">
+              <a class="goback left" href="#">Start Over</a>
+              <input type="submit" value="Save" />
+            </p>
+          </form>
+        </script>
+        <div id="confirmation" style="display:none;"></div>
+        <script id="confirmationtemplate" type="x-tmpl-mustache">
+          <p class="attendeename">{{name}}</p>
+          <p>We have your RSVP! Thanks, we look forward to seeing you.</p>
+          <p class="nav">
+            <a class="goback" href="#">Start Over</a>
+          </p>
+        </script>
+        <div id="confirmationdecline" style="display:none;"></div>
+        <script id="confirmationdeclinetemplate" type="x-tmpl-mustache">
+          <p class="attendeename">{{name}}</p>
+          <p>Thanks for letting us know!<br />
+          We look forward to seeing you another time.</p>
+          <p class="nav">
+            <a class="goback" href="#">Start Over</a>
+          </p>
+        </script>
+    </div>
+
+    <div class="twoup">
+        <a data-lightbox="us2" href="images/52bw-middle-fullsize.jpg">
+          <img src="images/52bw-middle-thumb.jpg" alt="" />
+        </a>
+        <a data-lightbox="us2" href="images/2bw-middle-fullsize.jpg">
+          <img src="images/2bw-middle-thumb.jpg" alt="" />
+        </a>
+    </div>
+
+    <div id="accommodations">
+      <h2>Accommodations</h2>
+      <p>We've reserved room blocks for you at the DoubleTree Omaha Downtown Hotel, which includes shuttle services.<br />Reference the &ldquo;Fernen/Koehler Wedding&rdquo; for discounted offers.</p>
+      <p>DoubleTree Omaha Downtown<br />
+      1616 Dodge Street, Omaha, Nebraska<br />
+      402-346-7600</p>
+      <div class="actionbuttons">
+        <a href="http://goo.gl/2F7ipC">Get Directions</a>
+        <a href="http://doubletree.hilton.com/en/dt/groups/personalized/O/OMAH-DT-FKW-20141002/index.jhtml?WT.mc_id=POG">Book Now</a>
+      </div>
+      
+    </div>
+
+    <div class="twoup">
+        <a data-lightbox="us3" href="images/39bw-middle-fullsize.jpg">
+          <img src="images/39bw-middle-thumb.jpg" alt="" />
+        </a>
+        <a data-lightbox="us3" href="images/49bw-middle-fullsize.jpg">
+          <img src="images/49bw-middle-thumb.jpg" alt="" />
+        </a>
+    </div>
+
+    <div id="registry">
+      <h2>Registry</h2>
+      <p>We are registered online at crowdrise.com as well as Bed, Bath &amp; Beyond and Target.</p>
+      <div class="actionbuttons">
+        <a target="_blank" href="https://www.crowdrise.com/MichaelaandGavin/fundraiser/">Crowdrise</a>
+        <a target="_blank" href="http://www.bedbathandbeyond.com/store/giftregistry/view_registry_guest.jsp?pwsToken=&amp;eventType=Wedding&amp;registryId=541297500&amp;pwsurl=">Bed, Bath &amp; Beyond</a>
+        <a target="_blank" href="http://www.target.com/GiftRegistrySearchViewCmd?registryType=WD&amp;jsRequest=true&amp;catalogId=10051&amp;status=completePage&amp;cumulativeTime=-1&amp;listId=EFOcEVq569zN76D1kk7CqA&amp;noOfPings=&amp;registryFirstName=michaela&amp;langId=-1&amp;segmentGrpName=-1&amp;storeId=10151&amp;registryLastName=fernen">Target</a>
+      </div>
+    </div>
+
+    <div class="twoup">
+        <a data-lightbox="us4" href="images/56bw-middle-fullsize.jpg">
+          <img src="images/56bw-middle-thumb.jpg" alt="" />
+        </a>
+        <a data-lightbox="us4" href="images/5bw-middle-fullsize.jpg">
+          <img src="images/5bw-middle-thumb.jpg" alt="" />
+        </a>
+    </div>
+
+    <div id="gallery">
+      <h2>Gallery</h2>
+      <a data-lightbox="us" href="images/1-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/1-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/15-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/15-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/20-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/20-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/27-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/27-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/36-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/36-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/41-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/41-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/47-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/47-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/58-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/58-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/62-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/62-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/68-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/68-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/11-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/11-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/16-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/16-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/21-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/21-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/28-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/28-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/37-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/37-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/42-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/42-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/48-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/48-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/59-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/59-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/63-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/63-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/7-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/7-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/12-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/12-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/17-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/17-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/22-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/22-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/29-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/29-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/38-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/38-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/43-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/43-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/51-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/51-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/6-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/6-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/64-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/64-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/9-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/9-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/13-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/13-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/18-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/18-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/25-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/25-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/30-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/30-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/4-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/4-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/44-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/44-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/55-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/55-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/60-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/60-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/65-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/65-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/14-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/14-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/19-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/19-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/26-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/26-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/32-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/32-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/40-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/40-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/46-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/46-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/57-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/57-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/61-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/61-bottom-thumb.jpg" alt="" /></a>
+      <a data-lightbox="us" href="images/66-bottom-fullsize.jpg" class="img-thumbnail"><img src="images/66-bottom-thumb.jpg" alt="" /></a>
+    </div>
+
+    <div id="footer">
+      <p>We hope to see you in October!</p>
+    </div>
+
+  </div>
+
+
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="lightbox/js/lightbox.js"></script>
+    <!-- do not edit the next line: -->
+    <!-- dev scripts -->
+  </body>
+  </html>

@@ -1,0 +1,6 @@
+original_pictures
+Website/build/images/
+ENV
+gamapi/rsvps/fixtures/*
+*.pyc
+htaccess-webfaction.txt
